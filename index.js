@@ -41,7 +41,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-    res.send('Hello World! how are you')
+    res.send('Hello World! how are ')
 })
 
 app.listen(port, () => {
