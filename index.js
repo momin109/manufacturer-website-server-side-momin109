@@ -23,6 +23,7 @@ async function run() {
         console.log('iam momin')
         const serviceCollection = client.db('manufacture').collection('services');
         const placeOrderCollection = client.db('placeOrder').collection('services');
+        const reviewCollection = client.db('best_tools').collection('reviews');
 
         app.get('/service', async (req, res) => {
             const query = {};
@@ -30,6 +31,19 @@ async function run() {
             const sevices = await cursor.toArray();
             res.send(sevices);
         })
+
+        // review post 
+
+        app.post('/review', async (req, res) => {
+            const newReview = req.body;
+            const result = await reviewCollection.insertOne(newReview);
+            res.send(result);
+        });
+
+        app.get('/review', async (req, res) => {
+            const reviews = await reviewCollection.find().toArray();
+            res.send(reviews);
+        });
 
         app.post('/placeOrder', async (req, res) => {
             const placeOrder = req.body;
