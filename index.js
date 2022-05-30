@@ -37,8 +37,8 @@ async function run() {
             res.send(result);
         })
 
-        // app.put
-        // git put
+
+        // git add new project
 
     }
     finally {
